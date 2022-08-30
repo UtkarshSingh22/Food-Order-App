@@ -1,0 +1,33 @@
+.main {
+    background-color: rgb(124, 213, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4vw;
+    padding-bottom: 10vh;
+}
+
+.head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30vh;
+}
+
+.gif {
+    height: 70vh;
+    border-radius: 20px;
+    margin-top: 30vh;
+}
+
+.info1,
+.info2 {
+    color: white;
+    font-size: 2.8rem;
+    font-weight: 800;
+}
+
+.info1 {
+    display: flex;
+    align-items: end;
+}

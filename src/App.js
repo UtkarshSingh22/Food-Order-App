@@ -3,6 +3,7 @@ import NavBar from "./Components/NavBar/NavBar";
 import MainContent from "./Components/MainContent/MainContent";
 import AddToCart from "./Components/MainContent/AddToCart";
 import StoreInfo from "./Components/MainContent/StoreInfo";
+import DeliveryInfo from "./Components/MainContent/DeliveryInfo";
 
 const foodItems = [
     {
@@ -38,6 +39,7 @@ function App() {
             <MainContent />
             <AddToCart foodItems={foodItems} />
             <StoreInfo />
+            <DeliveryInfo />
         </div>
     );
 }
