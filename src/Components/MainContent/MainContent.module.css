@@ -1,0 +1,37 @@
+.content {
+    background-image: url("../../images/Valley-10s-1920px.svg");
+    height: 120vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10vw;
+}
+
+.head {
+    color: white;
+    font-size: 5rem;
+}
+.intro1,
+.intro2 {
+    color: white;
+    font-size: 1.5rem;
+}
+.intro1 {
+    margin-top: 4vh;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+.gifs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vh;
+}
+img {
+    width: 50%;
+    border-radius: 50%;
+    border: 5px solid rgb(134, 121, 206);
+}

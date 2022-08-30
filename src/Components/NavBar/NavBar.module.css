@@ -15,7 +15,12 @@
 .cartBtn {
     background-color: rgb(255, 255, 255);
     font-size: 1.1rem;
-    gap: 20px;
+    gap: 10px;
     padding: 0 40px;
     height: 60%;
+}
+.itemsInCart {
+    background-color: pink;
+    padding: 2px 10px;
+    border-radius: 12px;
 }
