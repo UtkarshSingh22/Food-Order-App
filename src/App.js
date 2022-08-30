@@ -13,7 +13,7 @@ const foodItems = [
     {
         id: "2",
         name: "Pasta",
-        description: "A italian specialty!",
+        description: "An italian specialty!",
         price: 349,
     },
     {
