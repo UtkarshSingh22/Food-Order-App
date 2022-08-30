@@ -1,0 +1,20 @@
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(51, 46, 46);
+    margin-top: 5vh;
+}
+
+.head {
+    margin-top: 5vh;
+    color: #fff;
+}
+
+.card {
+    background-color: #fff;
+    width: 40%;
+    padding: 3vh;
+    border-radius: 20px;
+}
