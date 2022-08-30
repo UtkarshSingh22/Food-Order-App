@@ -1,0 +1,21 @@
+.head {
+    background-color: rgb(192, 28, 129);
+    display: flex;
+    min-height: 50px;
+    height: 10vh;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15vw;
+}
+.name {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.cartBtn {
+    background-color: rgb(255, 255, 255);
+    font-size: 1.1rem;
+    gap: 20px;
+    padding: 0 40px;
+    height: 60%;
+}
