@@ -1,0 +1,13 @@
+.main {
+    height: 40vh;
+    display: flex;
+}
+
+.pic1,
+.pic2,
+.pic3,
+.pic4,
+.pic5 {
+    width: 20vw;
+    height: 60vh;
+}

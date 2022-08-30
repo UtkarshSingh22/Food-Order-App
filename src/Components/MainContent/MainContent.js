@@ -20,8 +20,8 @@ const MainContent = () => {
                 </div>
             </div>
             <div className={styles.gifs}>
-                <img src={gif1} alt="food carousel" />
-                <img src={gif2} alt="food carousel" />
+                <img src={gif1} alt="food carousel" className={styles.img} />
+                <img src={gif2} alt="food carousel" className={styles.img} />
             </div>
         </div>
     );

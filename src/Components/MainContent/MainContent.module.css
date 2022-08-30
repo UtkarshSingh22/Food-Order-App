@@ -34,7 +34,7 @@
     gap: 5vh;
 }
 
-img {
+.img {
     width: 50%;
     border-radius: 50%;
     border: 5px solid rgb(195, 157, 243);
