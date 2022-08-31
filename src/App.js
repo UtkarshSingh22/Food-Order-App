@@ -1,9 +1,11 @@
+import React, { useState } from "react";
 import "./App.css";
 import NavBar from "./Components/NavBar/NavBar";
 import MainContent from "./Components/MainContent/MainContent";
 import AddToCart from "./Components/MainContent/AddToCart";
 import StoreInfo from "./Components/MainContent/StoreInfo";
 import DeliveryInfo from "./Components/MainContent/DeliveryInfo";
+import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
 
 const foodItems = [
     {
@@ -32,14 +34,23 @@ const foodItems = [
     },
 ];
 
+const itemsInCart = [];
+
 function App() {
+    const [itemsAdded, setItemsAdded] = useState(itemsInCart);
+
+    const addItemToCart = (item) => {
+        setItemsAdded([item, ...itemsAdded]);
+    };
+
     return (
         <div className="App">
             <NavBar />
             <MainContent />
-            <AddToCart foodItems={foodItems} />
+            <AddToCart foodItems={foodItems} addItem={addItemToCart} />
             <StoreInfo />
             <DeliveryInfo />
+            <ShoppingCart itemsInCart={itemsAdded} />
         </div>
     );
 }

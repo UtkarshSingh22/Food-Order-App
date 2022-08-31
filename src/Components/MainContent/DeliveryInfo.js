@@ -7,10 +7,8 @@ const DeliveryInfo = () => {
         <div className={styles.main}>
             <img src={gif} alt="gif" className={styles.gif} />
             <div className={styles.head}>
-                <div className={styles.info1}>Order fast and get your</div>
-                <div className={styles.info2}>
-                    order delivered within 30 minutes!
-                </div>
+                <div className={styles.info1}>Order fast and get it</div>
+                <div className={styles.info2}>delivered within 30 minutes!</div>
             </div>
         </div>
     );
