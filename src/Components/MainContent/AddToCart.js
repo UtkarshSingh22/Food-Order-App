@@ -1,17 +1,18 @@
 import React from "react";
 import EachItem from "./EachItem";
 import styles from "./AddToCart.module.css";
+import foodItems from "../Assets/Meals";
 
-const AddToCart = (props) => {
+const AddToCart = () => {
     const AddItemHandler = (item) => {
-        props.addItem(item);
+        foodItems.addItem(item);
     };
 
     return (
         <div className={styles.body}>
             <h2 className={styles.head}>Order Now!</h2>
             <div className={styles.card}>
-                {props.foodItems.map((foodItem) => {
+                {foodItems.map((foodItem) => {
                     return (
                         <EachItem
                             itemData={foodItem}
