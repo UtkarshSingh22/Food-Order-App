@@ -20,7 +20,7 @@ const foodItems = [
     {
         id: "4",
         name: "Green Bowl",
-        description: "Healthy...and green...",
+        description: "Healthy and green!",
         price: 399,
     },
 ];
