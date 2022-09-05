@@ -1,24 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Button from "../UI/Button";
 import styles from "./EachItem.module.css";
+import CartContext from "../Context/cart-context";
 
 const EachItem = (props) => {
-    const [quantityInput, setQuantityInput] = useState("");
+    const [quantityInput, setQuantityInput] = useState("1");
+    const [inputIsValid, setInputIsValid] = useState(true);
+
+    const ctx = useContext(CartContext);
 
     const quantityInputHandler = (event) => {
         setQuantityInput(event.target.value);
     };
 
     const addItemHandler = () => {
+        const amt = +quantityInput;
+
+        if (quantityInput.trim().length < 1 || amt < "1" || amt > "10") {
+            setInputIsValid(false);
+            return;
+        }
+        setInputIsValid(true);
+
         const item = {
             name: props.itemData.name,
+            id: props.itemData.id,
             price: props.itemData.price,
-            quantity: parseInt(quantityInput),
+            amount: amt,
         };
 
-        props.addItem(item);
+        ctx.addItem(item);
 
-        setQuantityInput("");
+        setQuantityInput("1");
     };
 
     return (
@@ -30,8 +43,8 @@ const EachItem = (props) => {
                 Quantity&nbsp;&nbsp;
                 <input
                     type="number"
-                    min="0"
-                    max="30"
+                    min="1"
+                    max="10"
                     className={styles.input}
                     onChange={quantityInputHandler}
                     value={quantityInput}
@@ -40,6 +53,11 @@ const EachItem = (props) => {
             <Button className={styles.addBtn} onClick={addItemHandler}>
                 + Add
             </Button>
+            {!inputIsValid && (
+                <p className={styles.error}>
+                    Please enter a valid quantity(1-10)
+                </p>
+            )}
         </div>
     );
 };

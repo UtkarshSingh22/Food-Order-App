@@ -21,3 +21,16 @@
     background-color: #fff;
     font-weight: 800;
 }
+
+.order,
+.cancel:hover {
+    background-color: rgb(46, 44, 44);
+    border-color: rgb(46, 44, 44);
+    color: #fff;
+}
+
+.items {
+    max-height: 50vh;
+    overflow-y: scroll;
+    padding-right: 10px;
+}

@@ -1,26 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./ShoppingCart.module.css";
-import ItemInCart from "./ItemInCart";
 import Modal from "./Modal";
 import Button from "../UI/Button";
+import CartContext from "../Context/cart-context";
+import ItemInCart from "./ItemInCart";
 
 const ShoppingCart = (props) => {
-    const Cart = [{ id: 1, name: "Burger", amount: 2, price: 399 }];
+    const ctx = useContext(CartContext);
+
+    const hasItems = ctx.items.length > 0;
 
     return (
         <Modal onCloseCart={props.onCloseCart}>
-            {Cart.map((item) => {
-                return item.name;
-            })}
+            <div className={styles.items}>
+                {ctx.items.map((item) => {
+                    return <ItemInCart item={item} />;
+                })}
+            </div>
             <div className={styles.total}>
                 <div className={styles.totalAmount}>Total amount</div>
-                <div className={styles.totalPrice}>878</div>
+                <div className={styles.totalPrice}>₹ {ctx.totalAmount}</div>
             </div>
             <div className={styles.btns}>
                 <Button className={styles.cancel} onClick={props.onCloseCart}>
                     Cancel
                 </Button>
-                <Button className={styles.order}>Order</Button>
+                {hasItems && <Button className={styles.order}>Order</Button>}
             </div>
         </Modal>
     );

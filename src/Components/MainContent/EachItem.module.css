@@ -1,7 +1,7 @@
 .card {
     padding: 10px 0;
     display: grid;
-    grid-template: repeat(2, 1fr) / repeat(4, 1fr);
+    grid-template: repeat(3, 1fr) / repeat(4, 1fr);
     border-bottom: 0.5px solid rgb(223, 220, 220);
 }
 
@@ -39,4 +39,9 @@
     place-self: center;
     border-radius: 20px;
     background-color: rgb(124, 213, 255);
+}
+
+.error {
+    grid-area: 3/1/4/5;
+    color: red;
 }
