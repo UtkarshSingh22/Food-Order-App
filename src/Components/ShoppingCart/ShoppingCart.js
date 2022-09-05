@@ -10,11 +10,26 @@ const ShoppingCart = (props) => {
 
     const hasItems = ctx.items.length > 0;
 
+    const addItemHandler = (item) => {
+        ctx.addItem({ ...item, amount: 1 });
+    };
+
+    const removeItemHandler = (item) => {
+        ctx.removeItem(item);
+    };
+
     return (
         <Modal onCloseCart={props.onCloseCart}>
             <div className={styles.items}>
                 {ctx.items.map((item) => {
-                    return <ItemInCart item={item} />;
+                    return (
+                        <ItemInCart
+                            key={item.id}
+                            item={item}
+                            onAdd={addItemHandler.bind(null, item)}
+                            onRemove={removeItemHandler.bind(null, item)}
+                        />
+                    );
                 })}
             </div>
             <div className={styles.total}>

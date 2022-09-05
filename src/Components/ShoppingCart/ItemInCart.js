@@ -10,8 +10,12 @@ const ItemInCart = (props) => {
             <div className={styles.value}>
                 <div className={styles.price}>₹ {props.item.price}</div>
                 <div className={styles.amount}>x{props.item.amount}</div>
-                <Button className={styles.add}>+</Button>
-                <Button className={styles.remove}>-</Button>
+                <Button className={styles.add} onClick={props.onAdd}>
+                    +
+                </Button>
+                <Button className={styles.remove} onClick={props.onRemove}>
+                    -
+                </Button>
             </div>
         </div>
     );
