@@ -18,8 +18,13 @@
     width: 6rem;
     height: 1.8rem;
     font-size: 1.1rem;
-    background-color: #fff;
     font-weight: 800;
+}
+
+.cancel,
+.order:hover {
+    background-color: #fff;
+    color: black;
 }
 
 .order,
