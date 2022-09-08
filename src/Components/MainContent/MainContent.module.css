@@ -1,6 +1,6 @@
 .content {
     background-image: url("../../images/Valley-10s-1920px.svg");
-    height: 130vh;
+    height: 120vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,14 +9,14 @@
 
 .head {
     color: white;
-    font-size: 5rem;
+    font-size: 4.4rem;
     font-weight: 800;
 }
 
 .intro1,
 .intro2 {
     color: white;
-    font-size: 2rem;
+    font-size: 1.6rem;
 }
 
 .intro1 {
