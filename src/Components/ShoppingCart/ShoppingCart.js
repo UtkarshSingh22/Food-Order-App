@@ -70,6 +70,10 @@ const ShoppingCart = (props) => {
         addReset();
     };
 
+    const nameClasses = nameHasError && styles.invalid;
+    const phoneClasses = phoneHasError && styles.invalid;
+    const addClasses = addHasError && styles.invalid;
+
     return (
         <Modal onCloseCart={props.onCloseCart}>
             <div className={styles.items}>
@@ -93,7 +97,7 @@ const ShoppingCart = (props) => {
                     <p className={styles.info}>Please fill in your details</p>
 
                     <div className={styles.firstRow}>
-                        <div className={styles.col1}>
+                        <div className={`${styles.col1} ${nameClasses}`}>
                             <label htmlFor="name" className={styles.nameLabel}>
                                 Name
                             </label>
@@ -112,7 +116,7 @@ const ShoppingCart = (props) => {
                             )}
                         </div>
 
-                        <div className={styles.col2}>
+                        <div className={`${styles.col2} ${phoneClasses}`}>
                             <label
                                 htmlFor="phone"
                                 className={styles.phoneLabel}
@@ -135,7 +139,7 @@ const ShoppingCart = (props) => {
                         </div>
                     </div>
 
-                    <div className={styles.secondRow}>
+                    <div className={`${styles.secondRow} ${addClasses}`}>
                         <label htmlFor="address" className={styles.addLabel}>
                             Address
                         </label>
