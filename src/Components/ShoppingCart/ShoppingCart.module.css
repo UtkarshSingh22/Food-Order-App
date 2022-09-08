@@ -2,8 +2,9 @@
     display: flex;
     justify-content: space-between;
     margin: 3vh 0;
-    font-size: 1.8rem;
-    font-weight: 800;
+    font-size: 1.6rem;
+    font-weight: 500;
+    font-style: italic;
 }
 
 .btns {
@@ -19,8 +20,8 @@
     border-radius: 20px;
     width: 7rem;
     height: 2rem;
-    font-size: 1.3rem;
-    font-weight: 800;
+    font-size: 1.2rem;
+    font-weight: 400;
 }
 
 .cancel,
@@ -91,11 +92,18 @@
 
 .info {
     color: rgb(79, 233, 233);
-    font-weight: 800;
+    font-weight: 600;
+    font-style: italic;
 }
 
 .addLabel {
     margin-top: 10px;
+}
+
+.addLabel,
+.nameLabel,
+.phoneLabel {
+    font-style: italic;
 }
 
 .invalid input,
