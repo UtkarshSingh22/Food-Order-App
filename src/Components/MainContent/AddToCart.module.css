@@ -18,4 +18,13 @@
     width: 40%;
     padding: 3vh;
     border-radius: 20px;
+    min-width: 400px;
+}
+
+.noItems {
+    color: white;
+}
+
+.error {
+    color: red;
 }
