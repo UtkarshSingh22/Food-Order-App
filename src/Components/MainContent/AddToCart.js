@@ -62,7 +62,7 @@ const AddToCart = () => {
 
     return (
         <div className={styles.body}>
-            <h2 className={styles.head}>Order Now!</h2>
+            <h1 className={styles.head}>Order Now!</h1>
             <React.Fragment>{content}</React.Fragment>
         </div>
     );
