@@ -13,7 +13,6 @@ const ShoppingCart = (props) => {
 
     const {
         inputValue: nameInput,
-        inputIsValid: nameIsValid,
         hasError: nameHasError,
         inputValueHandler: nameValueHandler,
         inputIsBlurHandler: nameBlurHandler,
@@ -22,7 +21,6 @@ const ShoppingCart = (props) => {
 
     const {
         inputValue: phoneInput,
-        inputIsValid: phoneIsValid,
         hasError: phoneHasError,
         inputValueHandler: phoneValueHandler,
         inputIsBlurHandler: phoneBlurHandler,
@@ -33,7 +31,6 @@ const ShoppingCart = (props) => {
 
     const {
         inputValue: addInput,
-        inputIsValid: addIsValid,
         hasError: addHasError,
         inputValueHandler: addValueHandler,
         inputIsBlurHandler: addBlurHandler,
@@ -55,12 +52,6 @@ const ShoppingCart = (props) => {
         setFormActive(true);
     };
 
-    let formIsValid = false;
-
-    if (nameIsValid && phoneIsValid && addIsValid) {
-        formIsValid = true;
-    }
-
     const submitOrder = async () => {
         const userDetails = {
             name: nameInput,
@@ -68,7 +59,7 @@ const ShoppingCart = (props) => {
             address: addInput,
         };
 
-        const response = await fetch(
+        await fetch(
             "https://react-http-75e3e-default-rtdb.firebaseio.com/orders.json",
             {
                 method: "POST",
