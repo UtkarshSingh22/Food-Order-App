@@ -114,3 +114,11 @@
     color: red;
     font-size: 15px;
 }
+
+.placing {
+    color: rgb(230, 230, 2);
+}
+
+.placed {
+    color: rgb(10, 216, 20);
+}

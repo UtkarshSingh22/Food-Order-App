@@ -8,6 +8,8 @@ import useInput from "../hooks/use-input";
 
 const ShoppingCart = (props) => {
     const [formActive, setFormActive] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [orderPlaced, setOrderPlaced] = useState(false);
 
     const {
         inputValue: nameInput,
@@ -59,15 +61,42 @@ const ShoppingCart = (props) => {
         formIsValid = true;
     }
 
+    const submitOrder = async () => {
+        const userDetails = {
+            name: nameInput,
+            phone: phoneInput,
+            address: addInput,
+        };
+
+        const response = await fetch(
+            "https://react-http-75e3e-default-rtdb.firebaseio.com/orders.json",
+            {
+                method: "POST",
+                body: JSON.stringify({
+                    user: userDetails,
+                    itemsOrdered: ctx.items,
+                }),
+                headers: { "Content-Type": "application/json" },
+            }
+        );
+    };
+
     const formSubmissionHandler = () => {
         if (nameHasError || phoneHasError || addHasError) {
             return;
         }
-        alert("Ordered successfully!");
+        setIsLoading(true);
+
+        submitOrder();
 
         nameReset();
         phoneReset();
         addReset();
+
+        setIsLoading(false);
+        setOrderPlaced(true);
+
+        ctx.clearItems();
     };
 
     const nameClasses = nameHasError && styles.invalid;
@@ -76,23 +105,27 @@ const ShoppingCart = (props) => {
 
     return (
         <Modal onCloseCart={props.onCloseCart}>
-            <div className={styles.items}>
-                {ctx.items.map((item) => {
-                    return (
-                        <ItemInCart
-                            key={item.id}
-                            item={item}
-                            onAdd={addItemHandler.bind(null, item)}
-                            onRemove={removeItemHandler.bind(null, item)}
-                        />
-                    );
-                })}
-            </div>
-            <div className={styles.total}>
-                <div className={styles.totalAmount}>Total amount</div>
-                <div className={styles.totalPrice}>₹ {ctx.totalAmount}</div>
-            </div>
-            {formActive && (
+            {!isLoading && !orderPlaced && (
+                <div className={styles.items}>
+                    {ctx.items.map((item) => {
+                        return (
+                            <ItemInCart
+                                key={item.id}
+                                item={item}
+                                onAdd={addItemHandler.bind(null, item)}
+                                onRemove={removeItemHandler.bind(null, item)}
+                            />
+                        );
+                    })}
+                </div>
+            )}
+            {!isLoading && !orderPlaced && (
+                <div className={styles.total}>
+                    <div className={styles.totalAmount}>Total amount</div>
+                    <div className={styles.totalPrice}>₹ {ctx.totalAmount}</div>
+                </div>
+            )}
+            {formActive && !isLoading && !orderPlaced && (
                 <form className={styles.form}>
                     <p className={styles.info}>Please fill in your details</p>
 
@@ -159,27 +192,40 @@ const ShoppingCart = (props) => {
                     </div>
                 </form>
             )}
-            <div className={styles.btns}>
-                <Button className={styles.cancel} onClick={props.onCloseCart}>
-                    Cancel
-                </Button>
-                {hasItems && !formActive && (
+            {!isLoading && !orderPlaced && (
+                <div className={styles.btns}>
                     <Button
-                        className={styles.proceed}
-                        onClick={showFormHandler}
+                        className={styles.cancel}
+                        onClick={props.onCloseCart}
                     >
-                        Proceed
+                        Cancel
                     </Button>
-                )}
-                {formActive && (
-                    <Button
-                        className={styles.order}
-                        onClick={formSubmissionHandler}
-                    >
-                        Order
-                    </Button>
-                )}
-            </div>
+                    {hasItems && !formActive && (
+                        <Button
+                            className={styles.proceed}
+                            onClick={showFormHandler}
+                        >
+                            Proceed
+                        </Button>
+                    )}
+                    {formActive && (
+                        <Button
+                            className={styles.order}
+                            onClick={formSubmissionHandler}
+                        >
+                            Order
+                        </Button>
+                    )}
+                </div>
+            )}
+            {isLoading && !orderPlaced && (
+                <h2 className={styles.placing}>
+                    Placing your order. Please wait!
+                </h2>
+            )}
+            {!isLoading && orderPlaced && (
+                <h2 className={styles.placed}>Order placed!</h2>
+            )}
         </Modal>
     );
 };
