@@ -10,6 +10,7 @@
     display: flex;
     gap: 2vw;
     justify-content: flex-end;
+    margin-top: 20px;
 }
 
 .cancel,
@@ -78,7 +79,6 @@
     min-height: 25px;
     min-width: 180px;
     width: 18vw;
-    margin-bottom: 20px;
 }
 
 .addInput {
@@ -87,10 +87,18 @@
     max-height: 60px;
     max-width: 99%;
     min-width: 99%;
-    margin-bottom: 30px;
 }
 
 .info {
     color: rgb(79, 233, 233);
     font-weight: 800;
+}
+
+.addLabel {
+    margin-top: 10px;
+}
+
+.errorText {
+    color: red;
+    font-size: 15px;
 }

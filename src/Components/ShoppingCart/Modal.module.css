@@ -1,7 +1,7 @@
 .modal {
     position: fixed;
     left: 50%;
-    top: 20vh;
+    top: 10vh;
     width: 40vw;
     background-color: rgb(95, 47, 158);
     color: aliceblue;

@@ -4,9 +4,39 @@ import Modal from "./Modal";
 import Button from "../UI/Button";
 import CartContext from "../Context/cart-context";
 import ItemInCart from "./ItemInCart";
+import useInput from "../hooks/use-input";
 
 const ShoppingCart = (props) => {
     const [formActive, setFormActive] = useState(false);
+
+    const {
+        inputValue: nameInput,
+        inputIsValid: nameIsValid,
+        hasError: nameHasError,
+        inputValueHandler: nameValueHandler,
+        inputIsBlurHandler: nameBlurHandler,
+        reset: nameReset,
+    } = useInput((value) => value.trim().length !== 0);
+
+    const {
+        inputValue: phoneInput,
+        inputIsValid: phoneIsValid,
+        hasError: phoneHasError,
+        inputValueHandler: phoneValueHandler,
+        inputIsBlurHandler: phoneBlurHandler,
+        reset: phoneReset,
+    } = useInput(
+        (value) => value.trim().length >= 9 && value.trim().length <= 11
+    );
+
+    const {
+        inputValue: addInput,
+        inputIsValid: addIsValid,
+        hasError: addHasError,
+        inputValueHandler: addValueHandler,
+        inputIsBlurHandler: addBlurHandler,
+        reset: addReset,
+    } = useInput((value) => value.trim().length !== 0);
 
     const ctx = useContext(CartContext);
     const hasItems = ctx.items.length > 0;
@@ -21,6 +51,23 @@ const ShoppingCart = (props) => {
 
     const showFormHandler = () => {
         setFormActive(true);
+    };
+
+    let formIsValid = false;
+
+    if (nameIsValid && phoneIsValid && addIsValid) {
+        formIsValid = true;
+    }
+
+    const formSubmissionHandler = () => {
+        if (nameHasError || phoneHasError || addHasError) {
+            return;
+        }
+        alert("Ordered successfully!");
+
+        nameReset();
+        phoneReset();
+        addReset();
     };
 
     return (
@@ -54,7 +101,15 @@ const ShoppingCart = (props) => {
                                 id="name"
                                 type="text"
                                 className={styles.nameInput}
+                                onChange={nameValueHandler}
+                                onBlur={nameBlurHandler}
+                                value={nameInput}
                             ></input>
+                            {nameHasError && (
+                                <p className={styles.errorText}>
+                                    Name must not be empty
+                                </p>
+                            )}
                         </div>
 
                         <div className={styles.col2}>
@@ -68,7 +123,15 @@ const ShoppingCart = (props) => {
                                 id="phone"
                                 type="number"
                                 className={styles.phoneInput}
+                                onChange={phoneValueHandler}
+                                onBlur={phoneBlurHandler}
+                                value={phoneInput}
                             ></input>
+                            {phoneHasError && (
+                                <p className={styles.errorText}>
+                                    Phone number must be of 9 - 11 digits
+                                </p>
+                            )}
                         </div>
                     </div>
 
@@ -80,7 +143,15 @@ const ShoppingCart = (props) => {
                             id="address"
                             type="text"
                             className={styles.addInput}
+                            onChange={addValueHandler}
+                            onBlur={addBlurHandler}
+                            value={addInput}
                         ></textarea>
+                        {addHasError && (
+                            <p className={styles.errorText}>
+                                Address must not be empty
+                            </p>
+                        )}
                     </div>
                 </form>
             )}
@@ -96,7 +167,14 @@ const ShoppingCart = (props) => {
                         Proceed
                     </Button>
                 )}
-                {formActive && <Button className={styles.order}>Order</Button>}
+                {formActive && (
+                    <Button
+                        className={styles.order}
+                        onClick={formSubmissionHandler}
+                    >
+                        Order
+                    </Button>
+                )}
             </div>
         </Modal>
     );
