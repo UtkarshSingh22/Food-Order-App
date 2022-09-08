@@ -13,6 +13,7 @@ const ShoppingCart = (props) => {
 
     const {
         inputValue: nameInput,
+        inputIsValid: nameIsValid,
         hasError: nameHasError,
         inputValueHandler: nameValueHandler,
         inputIsBlurHandler: nameBlurHandler,
@@ -21,6 +22,7 @@ const ShoppingCart = (props) => {
 
     const {
         inputValue: phoneInput,
+        inputIsValid: phoneIsValid,
         hasError: phoneHasError,
         inputValueHandler: phoneValueHandler,
         inputIsBlurHandler: phoneBlurHandler,
@@ -31,6 +33,7 @@ const ShoppingCart = (props) => {
 
     const {
         inputValue: addInput,
+        inputIsValid: addIsValid,
         hasError: addHasError,
         inputValueHandler: addValueHandler,
         inputIsBlurHandler: addBlurHandler,
@@ -73,7 +76,7 @@ const ShoppingCart = (props) => {
     };
 
     const formSubmissionHandler = () => {
-        if (nameHasError || phoneHasError || addHasError) {
+        if (!nameIsValid || !phoneIsValid || !addIsValid) {
             return;
         }
         setIsLoading(true);
